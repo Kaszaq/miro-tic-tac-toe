@@ -2,7 +2,7 @@
 
 This plugin allows to play Tic Tac Toe game on Miro board.
 
-
+![Tic Tac Toe Game](docs/tic-tac-toe-game.gif)
 
 
 ## Installation
