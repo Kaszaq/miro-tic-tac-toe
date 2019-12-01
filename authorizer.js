@@ -17,7 +17,7 @@ function contains(a1, a2) {
 class Authorizer {
     authorizeOptions = {
         response_type: 'token',
-        redirect_uri: 'https://mirosampleapp.eu.ngrok.io/authFinished.html'
+        redirect_uri: 'https://kaszaq.github.io/miro-tic-tac-toe/authFinished.html'
     };
     initPostAuth;
     constructor(requiredScope) {
