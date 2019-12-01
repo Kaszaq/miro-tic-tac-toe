@@ -1,7 +1,8 @@
 const CLIENT_ID = '3074457347056197788';
-const BACKGROUND_COLOR="#12cdd4";
-const X_COLOR = "#1a1a1a" ;
+const BACKGROUND_COLOR = "#12cdd4";
+const X_COLOR = "#1a1a1a";
 const O_COLOR = "#ffffff";
+
 async function changeTicTacToeWidget(w) {
     let gameId = w.metadata[CLIENT_ID].gameId;
     let allGameWidgets = await miro.board.widgets.get({metadata: {[CLIENT_ID]: {gameId: gameId}}});//'metadata.' + CLIENT_ID + '.gameId.' + gameId
@@ -28,24 +29,24 @@ async function changeTicTacToeWidget(w) {
     }
 
     if (selectedWasEmpty) {
-        w.metadata[[CLIENT_ID]].order =countX + countO + 1;
+        w.metadata[[CLIENT_ID]].order = countX + countO + 1;
 
-        w.style.textColor= (countX > countO ? O_COLOR : X_COLOR);
+        w.style.textColor = (countX > countO ? O_COLOR : X_COLOR);
         miro.board.widgets.update({
             id: w.id,
             text: (countX > countO ? "O" : "X"),
             metadata: w.metadata,
-            style:w.style
+            style: w.style
         });
 
     } else {
         if (w.metadata[CLIENT_ID].order !== (countX + countO)) {
             miro.showNotification("You can only reverse recently places tic or tac.");
         } else {
-            w.metadata[[CLIENT_ID]].order =0;
-            w.style.textColor= BACKGROUND_COLOR;
+            w.metadata[[CLIENT_ID]].order = 0;
+            w.style.textColor = BACKGROUND_COLOR;
 
-            miro.board.widgets.update({id: w.id, text:  ".", metadata: w.metadata, style:w.style});
+            miro.board.widgets.update({id: w.id, text: ".", metadata: w.metadata, style: w.style});
         }
     }
 }
@@ -141,10 +142,14 @@ async function onClick() {
 }
 
 miro.onReady(async () => {
-    if (await authorizer.isAuthorized()) {
-        listener =
+    if (!await authorizer.isAuthorized()) {
+        authorizer.registerPostAuthFunction(() => {
             miro.addListener('CANVAS_CLICKED', onCanvasClicked);
+        });
+    } else {
+        miro.addListener('CANVAS_CLICKED', onCanvasClicked);
     }
+
     miro.initialize({
         extensionPoints: {
             toolbar: {
