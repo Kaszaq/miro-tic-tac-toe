@@ -20,3 +20,19 @@ Sometimes you are tired of asking "how are you" when you are waiting for others 
 ## Known issues & upcoming features
 * The icons could be a bit more wide to fit better with Miro UX
 * In Miro when text is removed it is not actually updated on the Miro board this is visible only after reload. Hence when you are trying to clear the text you need to change the color of the text to fit with the background.
+
+## License
+
+Copyright 2020 Michał Kasza
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
